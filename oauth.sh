@@ -5,7 +5,7 @@ CURRENT_DIR=$(pwd)
 CLUSTER_NAME=$1
 
 echo "Exporting admin TLS credentials..."
-export KUBECONFIG=$CURRENT_DIR/install-dir-$CLUSTER_NAME/auth/kubeconfig
+export KUBECONFIG=$CURRENT_DIR/install/install-dir-$CLUSTER_NAME/auth/kubeconfig
 
 echo "Creating htpasswd file"
 rm -f ./oauth/htpasswd

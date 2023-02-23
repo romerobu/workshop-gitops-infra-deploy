@@ -4,9 +4,9 @@ CLUSTER=$1
 
 oc apply -f gitops-operator/subscription.yaml
 
-#while [[ $(oc get pods -n openshift-operators -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
-#   sleep 1
-#done
+while [[ $(oc get pods -n openshift-operators -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
+   sleep 1
+done
 echo "Operator installed..."
 
 oc apply -f gitops-operator/argo-instance.yaml
@@ -23,6 +23,11 @@ for i in $(seq 1 $CLUSTER);do
    CONTEXT=$(kubectl config get-contexts -o name)
    argocd cluster add $CONTEXT --kubeconfig install-dir-sno-$i/auth/kubeconfig --name sno-$i
    echo "Added cluster sno-$i"
+   
+   # PENDING
+   # Create projects for users and RBAC
+   # argocd proj create project-sno-$i -d sno-$i # maybe it is api
+
 done
 
 argocd cluster list
