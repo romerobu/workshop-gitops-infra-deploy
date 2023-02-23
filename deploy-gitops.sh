@@ -2,6 +2,10 @@
 
 CLUSTER=$1
 
+export KUBECONFIG=./install/install-dir-argo-hub/auth/kubeconfig
+
+echo "Login to argo hub cluster"
+
 oc apply -f gitops-operator/subscription.yaml
 
 while [[ $(oc get pods -n openshift-operators -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
