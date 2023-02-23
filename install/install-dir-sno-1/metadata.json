@@ -1,1 +1,0 @@
-{"clusterName":"sno-1","clusterID":"ea2caa11-ce93-432b-819d-c8480ee13611","infraID":"sno-1-wwr7m","aws":{"region":"eu-west-1","identifier":[{"kubernetes.io/cluster/sno-1-wwr7m":"owned"},{"openshiftClusterID":"ea2caa11-ce93-432b-819d-c8480ee13611"}],"clusterDomain":"sno-1.sandbox568.opentlc.com"}}
