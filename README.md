@@ -13,7 +13,7 @@ sh ocp4-install.sh <cluster_name> <region_aws> <base_domain> <replicas_master> <
 For example, if you want to deploy a argo-hub cluster:
 
 ```bash
-sh ocp4-install.sh argo-hub eu-west-1 <base_domain> 3 1 false <aws_id> <aws_secret> 
+sh ocp4-install.sh argo-hub eu-west-1 <base_domain> 3 3 false <aws_id> <aws_secret> 
 ```
 For deploying a sno managed cluster:
 
