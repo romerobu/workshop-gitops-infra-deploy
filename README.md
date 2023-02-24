@@ -37,8 +37,15 @@ aws ec2 describe-vpcs
 This script installs GitOps operator, deploy ArgoCD instance and add managed clusters. You must specify the amount of deployed SNO clusters to be managed by argocd:
 
 ```bash
-sh deploy-gitops.sh <amount_of_clusters>
+sh deploy-gitops.sh <amount_of_sno_clusters>
 ```
+
+For example, if you want to add 3 sno cluster (sno-1, sno-2 and sno-3):
+
+```bash
+sh deploy-gitops.sh 3
+```
+
 ## Destroy cluster
 
 If you want to delete a cluster, first run this command to destroy it from AWS:
