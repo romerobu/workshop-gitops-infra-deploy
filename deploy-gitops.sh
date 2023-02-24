@@ -14,6 +14,7 @@ done
 echo "Operator installed..."
 
 oc apply -f gitops-operator/argo-instance.yaml
+sleep 4
 echo "ArgoCD instance installed..."
 
 ARGO_SERVER=$(oc get route -n openshift-operators argocd-server  -o jsonpath='{.spec.host}')
@@ -34,6 +35,7 @@ for i in $(seq 1 $CLUSTER);do
 
 done
 
+export KUBECONFIG=./install/install-dir-argo-hub/auth/kubeconfig
 argocd cluster list
 
 echo "Done adding clusters"

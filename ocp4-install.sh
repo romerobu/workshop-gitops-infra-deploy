@@ -140,6 +140,7 @@ EOF
     if [ $INSTALL -gt 0 ]; then
     ./openshift-install create cluster --dir=install/install-dir-$CLUSTER_NAME --log-level=info
     echo "Set HTPasswd as Identity Provider" ; echo " "
+    ## PENDING: Modify oauth to apply different configuration to hub and snos
     ./oauth.sh $CLUSTER_NAME
     ssh-add -D
     fi

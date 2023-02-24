@@ -1,4 +1,4 @@
-ocp4-installer.tar.gz
-openshift-install
-pullsecret.txt
-backup/
+./ocp4-installer.tar.gz
+./openshift-install
+./pullsecret.txt
+./backup/
