@@ -35,6 +35,7 @@ for i in $(seq 1 $CLUSTER);do
 
 done
 
+export KUBECONFIG=./install/install-dir-argo-hub/auth/kubeconfig
 argocd cluster list
 
 echo "Done adding clusters"
