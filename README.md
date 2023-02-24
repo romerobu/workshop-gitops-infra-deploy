@@ -51,19 +51,19 @@ If you want to delete a cluster, first run this command to destroy it from AWS:
 ```bash
 CLUSTER_NAME=<cluster_name>
 openshift-install destroy cluster --dir install/install-dir-$CLUSTER_NAME --log-level info
-# Then remove installation directories
-rm -rf ./backup/backup-$CLUSTER_NAME
-rm -rf ./install/install-dir-$CLUSTER_NAME
 ```
-
 Then remove it from ArgoCD instance:
 
 ```bash
-CLUSTER_NAME=<cluster_name>
+# Make sure you are logged in cluster hub, unless you are trying to delete this cluster that this section is not required
+export KUBECONFIG=./install/install-dir-argo-hub/auth/kubeconfig
 # Login to argo server
 ARGO_SERVER=$(oc get route -n openshift-operators argocd-server  -o jsonpath='{.spec.host}')
 ADMIN_PASSWORD=$(oc get secret argocd-cluster -n openshift-operators  -o jsonpath='{.data.admin\.password}' | base64 -d)
 # Remove managed cluster
 argocd login $ARGO_SERVER --username admin --password $ADMIN_PASSWORD --insecure
 argocd cluster rm $CLUSTER_NAME
+# Then remove installation directories
+rm -rf ./backup/backup-$CLUSTER_NAME
+rm -rf ./install/install-dir-$CLUSTER_NAME
 ```
