@@ -65,8 +65,8 @@ EOF
     mkdir ./backup/backup-$CLUSTER_NAME/
     mkdir ./install/install-dir-$CLUSTER_NAME/
 
-    PULL_SECRET=`cat ./pullsecret.txt`
-    SSH_KEY=`cat ~/.ssh/myocp_$CLUSTER_NAME.pub`
+    PULL_SECRET=$(cat ./pullsecret.txt)
+    SSH_KEY=$(cat ~/.ssh/myocp_$CLUSTER_NAME.pub)
     
     if [ $VPC != false ]; then
       echo "Existing VPC is $VPC..."
