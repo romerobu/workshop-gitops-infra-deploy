@@ -62,8 +62,8 @@ EOF
     echo "Creating install config file" ; echo " "
     rm -f ./install/install-dir-$CLUSTER_NAME/install-config.yaml && rm -f ./install/install-dir-$CLUSTER_NAME/.openshift_install* ; #./openshift-install create install-config --dir=install-dir-$CLUSTER_NAME
     
-    mkdir ./backup/backup-$CLUSTER_NAME/
-    mkdir ./install/install-dir-$CLUSTER_NAME/
+    mkdir backup && mkdir ./backup/backup-$CLUSTER_NAME/
+    mkdir install && mkdir ./install/install-dir-$CLUSTER_NAME/
 
     PULL_SECRET=$(cat ./pullsecret.txt)
     SSH_KEY=$(cat ~/.ssh/myocp_$CLUSTER_NAME.pub)
