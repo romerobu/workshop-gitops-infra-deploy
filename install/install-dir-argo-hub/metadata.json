@@ -1,1 +1,0 @@
-{"clusterName":"argo-hub","clusterID":"c6e77c0e-9c5c-48d6-8fa8-df7789ac7bcc","infraID":"argo-hub-m4qcz","aws":{"region":"eu-central-1","identifier":[{"kubernetes.io/cluster/argo-hub-m4qcz":"owned"},{"openshiftClusterID":"c6e77c0e-9c5c-48d6-8fa8-df7789ac7bcc"}],"clusterDomain":"argo-hub.sandbox483.opentlc.com"}}

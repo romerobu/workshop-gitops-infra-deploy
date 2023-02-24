@@ -38,7 +38,7 @@ fi
 
 if [ ! -f ./install/install-dir-$CLUSTER_NAME/terraform.cluster.tfstate ]; then
     echo "AWS credentials: "; echo " "
-    aws configure set region $REGION --profile default 
+    aws configure set region $REGION 
 
 cat << EOF > ~/.aws/credentials
 [default]
