@@ -2,13 +2,15 @@
 
 ## Create cluster
 
-First of all, create a **./pullsecret.txt** containing the pull secret to be used.
+:warning: First of all, create a **./pullsecret.txt** containing the pull secret to be used.
+
 This script deploy OCP both hub and SNO managed on AWS. You must specify the following params:
 
 ```bash
 sh ocp4-install.sh <cluster_name> <region_aws> <base_domain> <replicas_master> <replicas_worker> <vpc_id|false> <aws_id> <aws_secret> <ocp_version|null>
 ```
-*VPC id is required only if you are deploying on an existing VPC, otherwise pass "false". OCP version is not a required input value either, you can skip it if you want to install the latest version.*
+VPC id is required only if you are deploying on an existing VPC, otherwise pass "false". 
+OCP version is not a required input value either, you can skip it if you want to install the latest version.
 
 For example, if you want to deploy a argo-hub cluster:
 
@@ -20,7 +22,16 @@ For deploying a sno managed cluster:
 ```bash
 sh ocp4-install.sh sno-1 eu-central-1 <base_domain> 1 0 <vpc_id> <aws_id> <aws_secret> 
 ```
+
+You can check your VPC id on AWS console or by running this command:
+
+```bash
+aws ec2 describe-vpcs 
+```
+
 ## Deploy and configure ArgoCD
+
+:warning: You need to install argocd [cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/).
 
 This script installs GitOps operator, deploy ArgoCD instance and add managed clusters. You must specify the amount of deployed SNO clusters to be managed by argocd:
 
