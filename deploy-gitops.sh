@@ -34,7 +34,7 @@ for i in $(seq 1 $CLUSTER);do
    export KUBECONFIG=./install/install-dir-sno-$i/auth/kubeconfig
    CONTEXT=$(kubectl config get-contexts -o name)
    argocd proj create project-sno-$i
-   argocd cluster add $CONTEXT --kubeconfig ./install/install-dir-sno-$i/auth/kubeconfig --name sno-$i 
+   argocd cluster add $CONTEXT --kubeconfig ./install/install-dir-sno-$i/auth/kubeconfig --name sno-$i --project sno-$i
    echo "Added cluster sno-$i"
    
    # Configure argo project and restrictions
