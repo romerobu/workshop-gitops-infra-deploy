@@ -1,5 +1,5 @@
-apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
+apiVersion: argoproj.io/v1alpha1
 metadata:
   name: argocd
   namespace: openshift-operators
@@ -13,6 +13,7 @@ spec:
         cpu: 250m
         memory: 1024Mi
   ha:
+    enabled: false
     resources:
       limits:
         cpu: 500m
@@ -20,7 +21,6 @@ spec:
       requests:
         cpu: 250m
         memory: 128Mi
-    enabled: false
   rbac:
     defaultPolicy: ''
     policy: |
@@ -42,6 +42,14 @@ spec:
       requests:
         cpu: 250m
         memory: 256Mi
+  resourceExclusions: |
+    - apiGroups:
+      - tekton.dev
+      clusters:
+      - '*'
+      kinds:
+      - TaskRun
+      - PipelineRun        
   server:
     resources:
       limits:
@@ -54,6 +62,7 @@ spec:
       enabled: true
   sso:
     dex:
+      openShiftOAuth: true
       resources:
         limits:
           cpu: 500m
@@ -61,13 +70,5 @@ spec:
         requests:
           cpu: 250m
           memory: 128Mi
-      openShiftOAuth: true
     provider: dex
-  resourceExclusions: |
-    - apiGroups:
-      - tekton.dev
-      clusters:
-      - '*'
-      kinds:
-      - TaskRun
-      - PipelineRun
+
