@@ -30,7 +30,7 @@ aws ec2 describe-vpcs
 
 ## Deploy and configure ArgoCD
 
-:warning: You need to install argocd [CLI](https://argo-cd.readthedocs.io/en/stable/cli_installation/).
+:warning: You need to install argocd [CLI](https://argo-cd.readthedocs.io/en/stable/cli_installation/) and [yq](https://www.cyberithub.com/how-to-install-yq-command-line-tool-on-linux-in-5-easy-steps/).
 
 This script installs GitOps operator, deploy ArgoCD instance and add managed clusters. You must specify the amount of deployed SNO clusters to be managed by argocd:
 
@@ -43,6 +43,8 @@ For example, if you want to add 3 sno cluster (sno-1, sno-2 and sno-3):
 ```bash
 sh deploy-gitops.sh 3
 ```
+
+This script configures argo RBAC so users created in hub cluster for sno managed cluster (user-1, user-2...) can only view project-sno-x and destination sno-x clusters hence only deploying to the allowed destination within the allowed project.
 
 ## Destroy cluster
 
