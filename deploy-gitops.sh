@@ -44,6 +44,7 @@ for i in $(seq 1 $CLUSTER);do
    # Configure RBAC project roles
    argocd proj role create project-sno-$i admin-sno-$i
    argocd proj role add-group project-sno-$i admin-sno-$i admin-sno-$i
+   argocd proj allow-cluster-resource project-sno-$i '*' '*'
    
    echo -e "p, role:admin-sno-$i, applications, *, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
    echo -e "p, role:admin-sno-$i, clusters, get, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
