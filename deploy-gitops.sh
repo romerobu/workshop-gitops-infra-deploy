@@ -64,3 +64,24 @@ oc apply -f ./gitops-operator/argo-instance.yaml
 
 argocd cluster list
 echo "Done adding clusters"
+
+# Deploy keycloak
+
+oc new-project keycloak
+oc process -f https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/openshift-examples/keycloak.yaml \
+    -p KEYCLOAK_ADMIN=admin \
+    -p KEYCLOAK_ADMIN_PASSWORD=admin \
+    -p NAMESPACE=keycloak \
+| oc create -f -
+
+KEYCLOAK_URL=https://$(oc get route keycloak --template='{{ .spec.host }}') &&
+echo "" &&
+echo "Keycloak:                 $KEYCLOAK_URL" &&
+echo "Keycloak Admin Console:   $KEYCLOAK_URL/admin" &&
+echo "Keycloak Account Console: $KEYCLOAK_URL/realms/myrealm/account" &&
+echo ""
+
+oc -n openshift-ingress-operator get secret router-ca -o jsonpath="{ .data.tls\.crt }" | base64 -d -i > ca.crt
+oc -n openshift-config create cm keycloak-ca --from-file=ca.crt
+
+# Create realm, user, client, credentials (token) and create secret
