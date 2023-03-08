@@ -1,0 +1,8 @@
+g, system:cluster-admins, role:admin 
+
+p, role:admin-sno-2, applications, *, project-sno-2/*, allow 
+
+p, role:admin-sno-2, clusters, get, project-sno-2/*, allow 
+
+g, admin-sno-2, role:admin-sno-2 
+

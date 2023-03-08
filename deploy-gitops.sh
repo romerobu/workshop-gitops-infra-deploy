@@ -8,9 +8,9 @@ echo "Login to argo hub cluster"
 
 oc apply -f gitops-operator/subscription.yaml
 
-while [[ $(oc get pods -n openshift-operators -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
-   sleep 1
-done
+#while [[ $(oc get pods -n openshift-operators -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
+#   sleep 1
+#done
 echo "Operator installed..."
 
 oc apply -f gitops-operator/argo-instance.yaml
@@ -28,7 +28,7 @@ ADMIN_PASSWORD=$(oc get secret argocd-cluster -n openshift-operators  -o jsonpat
 argocd login $ARGO_SERVER --username admin --password $ADMIN_PASSWORD --insecure
 echo "Login to argocd servr..."
 
-for i in $(seq 1 $CLUSTER);do
+for i in $(seq 2 $CLUSTER);do
 
    
    export KUBECONFIG=./install/install-dir-sno-$i/auth/kubeconfig

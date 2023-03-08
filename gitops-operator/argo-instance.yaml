@@ -23,8 +23,11 @@ spec:
         memory: 128Mi
   rbac:
     defaultPolicy: ''
-    policy: |
+    policy: |-
       g, system:cluster-admins, role:admin
+      p, role:admin-sno-2, applications, *, project-sno-2/*, allow
+      p, role:admin-sno-2, clusters, get, project-sno-2/*, allow
+      g, admin-sno-2, role:admin-sno-2
     scopes: '[groups]'
   redis:
     resources:
@@ -42,14 +45,7 @@ spec:
       requests:
         cpu: 250m
         memory: 256Mi
-  resourceExclusions: |
-    - apiGroups:
-      - tekton.dev
-      clusters:
-      - '*'
-      kinds:
-      - TaskRun
-      - PipelineRun        
+  resourceExclusions: "- apiGroups:\n  - tekton.dev\n  clusters:\n  - '*'\n  kinds:\n  - TaskRun\n  - PipelineRun        \n"
   server:
     resources:
       limits:
@@ -71,4 +67,3 @@ spec:
           cpu: 250m
           memory: 128Mi
     provider: dex
-
