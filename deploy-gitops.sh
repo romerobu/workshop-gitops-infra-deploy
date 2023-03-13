@@ -70,6 +70,7 @@ for i in $(seq 1 $CLUSTER);do
    
    echo -e "p, role:admin-sno-$i, applications, *, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
    echo -e "p, role:admin-sno-$i, clusters, get, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
+   echo -e "p, role:admin-sno-$i, repositories, *, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
    echo -e "g, admin-sno-$i, role:admin-sno-$i \n" >> ./gitops-operator/argo-rbac.csv
    
    # Create groups
