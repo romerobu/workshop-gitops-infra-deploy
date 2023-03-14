@@ -70,6 +70,7 @@ for i in $(seq 4 $CLUSTER);do
    
    echo -e "p, role:admin-sno-$i, applications, *, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
    echo -e "p, role:admin-sno-$i, clusters, get, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
+   echo -e "p, role:admin-sno-$i, repositories, *, project-sno-$i/*, allow \n" >> ./gitops-operator/argo-rbac.csv
    echo -e "g, admin-sno-$i, role:admin-sno-$i \n" >> ./gitops-operator/argo-rbac.csv
    
    # Create groups
@@ -83,7 +84,9 @@ for i in $(seq 4 $CLUSTER);do
    oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh create realms -s realm=myrealm-$i -s enabled=true --no-config --server http://localhost:8080 --realm master --user admin --password admin"
    oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh create clients -r myrealm-$i -s clientId=myclient-$i -s enabled=true --no-config --server http://localhost:8080 --realm master --user admin --password admin" 
    id=$(oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh get clients -q clientId=myclient-$i -r myrealm-$i --fields id --format csv --noquotes --no-config --server http://localhost:8080 --realm master --user admin --password admin" | sed -n '2p')
+
    oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh update clients/${id:0:$(expr length $id)-1} -s 'redirectUris=[\"https://oauth-openshift.apps.sno-$i.sandbox2471.opentlc.com/oauth2callback/keycloak/*\"]' -s 'directAccessGrantsEnabled=true' -r myrealm-$i --no-config --server http://localhost:8080 --realm master --user admin --password admin"
+   #oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh update clients/${id:0:$(expr length $id)-1} -s 'redirectUris=[\"https://*\"]' -s 'directAccessGrantsEnabled=true' -r myrealm-$i --no-config --server http://localhost:8080 --realm master --user admin --password admin"
    oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh create users -s username=myuser-$i -s enabled=true -r myrealm-$i --no-config --server http://localhost:8080 --realm master --user admin --password admin"
    oc exec -it $pod -- sh -c "/opt/keycloak/bin/kcadm.sh set-password --username myuser-$i --new-password myuser-$i -r myrealm-$i --no-config --server http://localhost:8080 --realm master --user admin --password admin"
 

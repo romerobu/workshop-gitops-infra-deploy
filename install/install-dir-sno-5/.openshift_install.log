@@ -3849,3 +3849,128 @@ time="2023-03-13T11:55:53+01:00" level=debug msg="               API: 2m8s"
 time="2023-03-13T11:55:53+01:00" level=debug msg=" Bootstrap Destroy: 1m41s"
 time="2023-03-13T11:55:53+01:00" level=debug msg=" Cluster Operators: 12m45s"
 time="2023-03-13T11:55:53+01:00" level=info msg="Time elapsed: 34m29s"
+time="2023-03-14T13:53:24+01:00" level=debug msg="OpenShift Installer 4.10.16"
+time="2023-03-14T13:53:24+01:00" level=debug msg="Built from commit a4b45c9948014b7631beec9a33382dcb6bced684"
+time="2023-03-14T13:53:24+01:00" level=info msg="Credentials loaded from the \"default\" profile in file \"/home/cromerob/.aws/credentials\""
+time="2023-03-14T13:53:24+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:53:24+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:53:24+01:00" level=debug msg="search for matching resources by tag in us-east-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:53:26+01:00" level=debug msg="search for matching resources by tag in us-east-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:53:26+01:00" level=debug msg="search for IAM roles"
+time="2023-03-14T13:53:31+01:00" level=debug msg="search for IAM users"
+time="2023-03-14T13:53:36+01:00" level=debug msg="search for IAM instance profiles"
+time="2023-03-14T13:53:36+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:53:37+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:53:37+01:00" level=info msg=Disassociated id=i-0302fe17fc9a14f77 name=sno-5-z4dsd-master-profile role=sno-5-z4dsd-master-role
+time="2023-03-14T13:53:38+01:00" level=info msg=Deleted InstanceProfileName=sno-5-z4dsd-master-profile arn="arn:aws:iam::666334373537:instance-profile/sno-5-z4dsd-master-profile" id=i-0302fe17fc9a14f77
+time="2023-03-14T13:53:38+01:00" level=debug msg=Terminating id=i-0302fe17fc9a14f77
+time="2023-03-14T13:53:48+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:53:48+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:53:58+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:53:58+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:08+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:08+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:18+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:18+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:28+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:28+01:00" level=debug msg="search for instances by tag matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:28+01:00" level=info msg=Deleted id=sno-5-z4dsd-aws-ebs-csi-driver-operator-lwjhq policy=sno-5-z4dsd-aws-ebs-csi-driver-operator-lwjhq-policy
+time="2023-03-14T13:54:29+01:00" level=info msg=Deleted id=sno-5-z4dsd-aws-ebs-csi-driver-operator-lwjhq
+time="2023-03-14T13:54:29+01:00" level=debug msg="ResourceInUse: Target group 'arn:aws:elasticloadbalancing:eu-west-1:666334373537:targetgroup/sno-5-z4dsd-aext/6e636a884551f810' is currently in use by a listener or a rule\n\tstatus code: 400, request id: cf152fe9-d073-4216-8ee4-5454ecd9ac71" arn="arn:aws:elasticloadbalancing:eu-west-1:666334373537:targetgroup/sno-5-z4dsd-aext/6e636a884551f810"
+time="2023-03-14T13:54:29+01:00" level=debug msg="Revoked ingress permissions" id=sg-06a27bda6b89bad55
+time="2023-03-14T13:54:30+01:00" level=debug msg="Revoked egress permissions" id=sg-06a27bda6b89bad55
+time="2023-03-14T13:54:30+01:00" level=debug msg="DependencyViolation: resource sg-06a27bda6b89bad55 has a dependent object\n\tstatus code: 400, request id: 420121f7-c54d-44af-a43c-07bf07da1780" arn="arn:aws:ec2:eu-west-1:666334373537:security-group/sg-06a27bda6b89bad55"
+time="2023-03-14T13:54:30+01:00" level=info msg=Deleted id=sno-5-z4dsd-worker-role name=sno-5-z4dsd-worker-role policy=sno-5-z4dsd-worker-policy
+time="2023-03-14T13:54:31+01:00" level=info msg=Disassociated id=sno-5-z4dsd-worker-role name=sno-5-z4dsd-worker-profile role=sno-5-z4dsd-worker-role
+time="2023-03-14T13:54:31+01:00" level=info msg=Deleted InstanceProfileName=sno-5-z4dsd-worker-profile arn="arn:aws:iam::666334373537:instance-profile/sno-5-z4dsd-worker-profile" id=sno-5-z4dsd-worker-role name=sno-5-z4dsd-worker-role
+time="2023-03-14T13:54:31+01:00" level=info msg=Deleted id=sno-5-z4dsd-worker-role name=sno-5-z4dsd-worker-role
+time="2023-03-14T13:54:31+01:00" level=info msg=Deleted id=net/sno-5-z4dsd-int/2b6d2e23d72304e0
+time="2023-03-14T13:54:31+01:00" level=info msg=Deleted id=sno-5-z4dsd-aint/d1d47c7047b00f8c
+time="2023-03-14T13:54:32+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-image-registry-5nvcg policy=sno-5-z4dsd-openshift-image-registry-5nvcg-policy
+time="2023-03-14T13:54:32+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-image-registry-5nvcg
+time="2023-03-14T13:54:33+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-machine-api-aws-9s5j2 policy=sno-5-z4dsd-openshift-machine-api-aws-9s5j2-policy
+time="2023-03-14T13:54:33+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-machine-api-aws-9s5j2
+time="2023-03-14T13:54:34+01:00" level=debug msg="listing AWS hosted zones \"sno-5.sandbox1389.opentlc.com.\" (page 0)" id=Z05085223BE85IAFBYIZC
+time="2023-03-14T13:54:34+01:00" level=debug msg="listing AWS hosted zones \"sandbox1389.opentlc.com.\" (page 0)" id=Z05085223BE85IAFBYIZC
+time="2023-03-14T13:54:36+01:00" level=info msg=Deleted id=Z05085223BE85IAFBYIZC record set="A api-int.sno-5.sandbox1389.opentlc.com."
+time="2023-03-14T13:54:36+01:00" level=info msg=Deleted id=Z05085223BE85IAFBYIZC public zone=/hostedzone/Z078207315DE73BA0P4GD record set="A api.sno-5.sandbox1389.opentlc.com."
+time="2023-03-14T13:54:36+01:00" level=info msg=Deleted id=Z05085223BE85IAFBYIZC public zone=/hostedzone/Z078207315DE73BA0P4GD record set="A \\052.apps.sno-5.sandbox1389.opentlc.com."
+time="2023-03-14T13:54:37+01:00" level=debug msg="HostedZoneNotEmpty: The specified hosted zone contains non-required resource record sets  and so cannot be deleted.\n\tstatus code: 400, request id: e135c2c2-a84a-4ff0-a17c-8e157850763a" arn="arn:aws:route53:::hostedzone/Z05085223BE85IAFBYIZC"
+time="2023-03-14T13:54:37+01:00" level=debug msg="Revoked ingress permissions" id=sg-05e75fd9e9f4fdd61
+time="2023-03-14T13:54:37+01:00" level=debug msg="Revoked egress permissions" id=sg-05e75fd9e9f4fdd61
+time="2023-03-14T13:54:38+01:00" level=debug msg="DependencyViolation: resource sg-05e75fd9e9f4fdd61 has a dependent object\n\tstatus code: 400, request id: ac47ceb0-f1dc-40c1-8a57-a51edeb7057e" arn="arn:aws:ec2:eu-west-1:666334373537:security-group/sg-05e75fd9e9f4fdd61"
+time="2023-03-14T13:54:38+01:00" level=debug msg=Emptied
+time="2023-03-14T13:54:38+01:00" level=debug msg="Versions Deleted"
+time="2023-03-14T13:54:38+01:00" level=info msg=Deleted
+time="2023-03-14T13:54:39+01:00" level=debug msg="Revoked ingress permissions" id=sg-042821fbd363bfca6
+time="2023-03-14T13:54:39+01:00" level=debug msg="Revoked egress permissions" id=sg-042821fbd363bfca6
+time="2023-03-14T13:54:40+01:00" level=info msg=Deleted id=sg-042821fbd363bfca6
+time="2023-03-14T13:54:40+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-ingress-vqgsx policy=sno-5-z4dsd-openshift-ingress-vqgsx-policy
+time="2023-03-14T13:54:40+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-ingress-vqgsx
+time="2023-03-14T13:54:40+01:00" level=info msg=Deleted id=aa0680fb90d374dcb916182d09abe176
+time="2023-03-14T13:54:41+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-cloud-network-config-contro-rbwnj policy=sno-5-z4dsd-openshift-cloud-network-config-contro-rbwnj-policy
+time="2023-03-14T13:54:41+01:00" level=info msg=Deleted id=sno-5-z4dsd-openshift-cloud-network-config-contro-rbwnj
+time="2023-03-14T13:54:41+01:00" level=info msg=Deleted id=eni-09174d55a25d6fb18
+time="2023-03-14T13:54:42+01:00" level=info msg=Deleted id=sno-5-z4dsd-cloud-credential-operator-iam-ro-vxnhv policy=sno-5-z4dsd-cloud-credential-operator-iam-ro-vxnhv-policy
+time="2023-03-14T13:54:42+01:00" level=info msg=Deleted id=sno-5-z4dsd-cloud-credential-operator-iam-ro-vxnhv
+time="2023-03-14T13:54:42+01:00" level=info msg=Deleted id=net/sno-5-z4dsd-ext/2cf21e841d68e1fc
+time="2023-03-14T13:54:42+01:00" level=info msg=Deleted id=sno-5-z4dsd-master-role name=sno-5-z4dsd-master-role policy=sno-5-z4dsd-master-policy
+time="2023-03-14T13:54:43+01:00" level=info msg=Deleted id=sno-5-z4dsd-master-role name=sno-5-z4dsd-master-role
+time="2023-03-14T13:54:43+01:00" level=info msg=Deleted id=sno-5-z4dsd-sint/bc53912fd53c9e92
+time="2023-03-14T13:54:43+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:43+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:43+01:00" level=debug msg="search for matching resources by tag in us-east-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:44+01:00" level=debug msg="search for matching resources by tag in us-east-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:44+01:00" level=debug msg="search for IAM roles"
+time="2023-03-14T13:54:44+01:00" level=debug msg="search for IAM users"
+time="2023-03-14T13:54:44+01:00" level=debug msg="search for IAM instance profiles"
+time="2023-03-14T13:54:55+01:00" level=info msg=Deleted id=sg-06a27bda6b89bad55
+time="2023-03-14T13:54:55+01:00" level=debug msg="DependencyViolation: resource sg-05e75fd9e9f4fdd61 has a dependent object\n\tstatus code: 400, request id: 8935575f-bb82-47f6-a933-1c23ddceb313" arn="arn:aws:ec2:eu-west-1:666334373537:security-group/sg-05e75fd9e9f4fdd61"
+time="2023-03-14T13:54:56+01:00" level=debug msg="listing AWS hosted zones \"sno-5.sandbox1389.opentlc.com.\" (page 0)" id=Z05085223BE85IAFBYIZC
+time="2023-03-14T13:54:56+01:00" level=debug msg="listing AWS hosted zones \"sandbox1389.opentlc.com.\" (page 0)" id=Z05085223BE85IAFBYIZC
+time="2023-03-14T13:54:58+01:00" level=info msg=Deleted id=Z05085223BE85IAFBYIZC record set="A api.sno-5.sandbox1389.opentlc.com."
+time="2023-03-14T13:54:58+01:00" level=info msg=Deleted id=Z05085223BE85IAFBYIZC record set="A \\052.apps.sno-5.sandbox1389.opentlc.com."
+time="2023-03-14T13:54:58+01:00" level=info msg=Deleted id=Z05085223BE85IAFBYIZC
+time="2023-03-14T13:54:58+01:00" level=info msg=Deleted id=sno-5-z4dsd-aext/6e636a884551f810
+time="2023-03-14T13:54:58+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:58+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:59+01:00" level=debug msg="search for matching resources by tag in us-east-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:54:59+01:00" level=debug msg="search for matching resources by tag in us-east-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:54:59+01:00" level=debug msg="no deletions from us-east-1, removing client"
+time="2023-03-14T13:54:59+01:00" level=debug msg="search for IAM roles"
+time="2023-03-14T13:54:59+01:00" level=debug msg="search for IAM users"
+time="2023-03-14T13:55:00+01:00" level=debug msg="search for IAM instance profiles"
+time="2023-03-14T13:55:05+01:00" level=info msg=Deleted id=sg-05e75fd9e9f4fdd61
+time="2023-03-14T13:55:05+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"kubernetes.io/cluster/sno-5-z4dsd\":\"owned\"}"
+time="2023-03-14T13:55:05+01:00" level=debug msg="search for matching resources by tag in eu-west-1 matching aws.Filter{\"openshiftClusterID\":\"a5e16bdb-f073-4155-bb38-b7a8327ca852\"}"
+time="2023-03-14T13:55:06+01:00" level=debug msg="no deletions from eu-west-1, removing client"
+time="2023-03-14T13:55:06+01:00" level=debug msg="search for IAM roles"
+time="2023-03-14T13:55:06+01:00" level=debug msg="search for IAM users"
+time="2023-03-14T13:55:06+01:00" level=debug msg="search for IAM instance profiles"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Search for and remove tags in eu-west-1 matching kubernetes.io/cluster/sno-5-z4dsd: shared"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Nothing to clean for shared ec2 resource" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-0326efb65f92ef854"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Nothing to clean for shared ec2 resource" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-07df61ea3e177d610"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Nothing to clean for shared ec2 resource" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-04c7c0139ee99cfc5"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Nothing to clean for shared ec2 resource" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-0c5df23ce40ea012f"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Nothing to clean for shared ec2 resource" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-03bf977d5d05ac0a5"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Nothing to clean for shared ec2 resource" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-08cf9ae6c254f7ebb"
+time="2023-03-14T13:55:06+01:00" level=info msg="Removed tag kubernetes.io/cluster/sno-5-z4dsd: shared" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-0326efb65f92ef854"
+time="2023-03-14T13:55:06+01:00" level=info msg="Removed tag kubernetes.io/cluster/sno-5-z4dsd: shared" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-07df61ea3e177d610"
+time="2023-03-14T13:55:06+01:00" level=info msg="Removed tag kubernetes.io/cluster/sno-5-z4dsd: shared" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-04c7c0139ee99cfc5"
+time="2023-03-14T13:55:06+01:00" level=info msg="Removed tag kubernetes.io/cluster/sno-5-z4dsd: shared" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-0c5df23ce40ea012f"
+time="2023-03-14T13:55:06+01:00" level=info msg="Removed tag kubernetes.io/cluster/sno-5-z4dsd: shared" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-03bf977d5d05ac0a5"
+time="2023-03-14T13:55:06+01:00" level=info msg="Removed tag kubernetes.io/cluster/sno-5-z4dsd: shared" arn="arn:aws:ec2:eu-west-1:666334373537:subnet/subnet-08cf9ae6c254f7ebb"
+time="2023-03-14T13:55:06+01:00" level=debug msg="Search for and remove tags in us-east-1 matching kubernetes.io/cluster/sno-5-z4dsd: shared"
+time="2023-03-14T13:55:07+01:00" level=debug msg="No matches in us-east-1 for kubernetes.io/cluster/sno-5-z4dsd: shared, removing client"
+time="2023-03-14T13:55:07+01:00" level=debug msg="Search for and remove tags in eu-west-1 matching kubernetes.io/cluster/sno-5-z4dsd: shared"
+time="2023-03-14T13:55:07+01:00" level=debug msg="No matches in eu-west-1 for kubernetes.io/cluster/sno-5-z4dsd: shared, removing client"
+time="2023-03-14T13:55:07+01:00" level=debug msg="Search for and remove shared tags for IAM roles matching kubernetes.io/cluster/sno-5-z4dsd: shared"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Metadata\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Master Ignition Customization Check\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Worker Ignition Customization Check\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Terraform Variables\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Kubeconfig Admin Client\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Kubeadmin Password\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Certificate (journal-gatewayd)\" from disk"
+time="2023-03-14T13:55:11+01:00" level=debug msg="Purging asset \"Cluster\" from disk"
+time="2023-03-14T13:55:11+01:00" level=info msg="Time elapsed: 1m47s"

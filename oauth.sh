@@ -26,6 +26,10 @@ if [ $ADMIN == false ]; then
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-4 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-5 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-6 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-7 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-8 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-9 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-10 redhat
 
 else
 
@@ -62,5 +66,5 @@ oc apply -f ./oauth/oauth-$CLUSTER_NAME/cluster-oauth.yaml
 echo "Giving cluster-admin role to admin user"
 oc adm policy add-cluster-role-to-user cluster-admin admin
 
-echo "Remove kubeadmin user"
-oc delete secrets kubeadmin -n kube-system --ignore-not-found=true
+#echo "Remove kubeadmin user"
+#oc delete secrets kubeadmin -n kube-system --ignore-not-found=true
