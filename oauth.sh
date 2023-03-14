@@ -23,6 +23,9 @@ if [ $ADMIN == false ]; then
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-1 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-2 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-3 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-4 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-5 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-6 redhat
 
 else
 
