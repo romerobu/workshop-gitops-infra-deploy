@@ -34,9 +34,8 @@ ADMIN_PASSWORD=$(oc get secret argocd-cluster -n openshift-operators  -o jsonpat
 argocd login $ARGO_SERVER --username admin --password $ADMIN_PASSWORD --insecure
 echo "Login to argocd servr..."
 
-for i in $(seq 4 $CLUSTER);do
+for i in $(seq 1 $CLUSTER);do
 
-   
    export KUBECONFIG=./install/install-dir-sno-$i/auth/kubeconfig
    CONTEXT=$(kubectl config get-contexts -o name)
    argocd proj create project-sno-$i
