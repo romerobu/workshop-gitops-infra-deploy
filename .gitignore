@@ -4,4 +4,4 @@ pullsecret.txt
 backup/
 install/
 oauth/
-.keys/
+.keys
