@@ -88,13 +88,13 @@ oc exec -it dc/ipa -n ipa -- \
     sh -c "echo Passw0rd | \
     ipa user-add henry --first=henry \
     --last=ipa --email=henryipa@redhatlabs.dev --password || true && \
-    ipa group-add-member ocp_devs --users=minnie"
+    ipa group-add-member ocp_devs --users=henry"
 
 oc exec -it dc/ipa -n ipa -- \
     sh -c "echo Passw0rd | \
     ipa user-add mark --first=mark \
     --last=ipa --email=markipa@redhatlabs.dev --password || true && \
-    ipa group-add-member ocp_viewers --users=pluto"
+    ipa group-add-member ocp_viewers --users=mark"
 ```
 
 ## Destroy cluster
