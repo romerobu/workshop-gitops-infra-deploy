@@ -46,6 +46,57 @@ sh deploy-gitops.sh 3
 
 This script configures argo RBAC so users created in hub cluster for sno managed cluster (user-1, user-2...) can only view project-sno-x and destination sno-x clusters hence only deploying to the allowed destination within the allowed project.
 
+## Deploy keycloak
+
+To deploy an instance of keycloak and create the corresponding realms, client and users, run this script:
+
+```bash
+sh set-up-keycloak.sh <number_of_clusters> <subdomain>
+```
+
+## Deploy FreeIPA
+
+warning: TO DO
+
+# Create FreeIPA users
+
+To create FreeIPA users, run these commands:
+
+```bash
+# Login to kerberos
+oc exec -it dc/ipa -n ipa -- \
+    sh -c "echo Passw0rd123 | /usr/bin/kinit admin"
+    
+# Create groups if they dont exist
+
+oc exec -it dc/ipa -n ipa -- \
+    sh -c "ipa group-add student --desc 'wrapper group' || true && \
+    ipa group-add ocp_admins --desc 'admin openshift group' || true && \
+    ipa group-add ocp_devs --desc 'edit openshift group' || true && \
+    ipa group-add ocp_viewers --desc 'view openshift group' || true && \
+    ipa group-add-member student --groups=ocp_admins --groups=ocp_devs --groups=ocp_viewers || true"
+
+# Add demo users
+
+oc exec -it dc/ipa -n ipa -- \
+    sh -c "echo Passw0rd | \
+    ipa user-add paul --first=paul \
+    --last=ipa --email=paulipa@redhatlabs.dev --password || true && \
+    ipa group-add-member ocp_admins --users=paul"
+
+oc exec -it dc/ipa -n ipa -- \
+    sh -c "echo Passw0rd | \
+    ipa user-add henry --first=henry \
+    --last=ipa --email=henryipa@redhatlabs.dev --password || true && \
+    ipa group-add-member ocp_devs --users=minnie"
+
+oc exec -it dc/ipa -n ipa -- \
+    sh -c "echo Passw0rd | \
+    ipa user-add mark --first=mark \
+    --last=ipa --email=markipa@redhatlabs.dev --password || true && \
+    ipa group-add-member ocp_viewers --users=pluto"
+```
+
 ## Destroy cluster
 
 If you want to delete a cluster, first run this command to destroy it from AWS:
