@@ -32,3 +32,11 @@ p, role:admin-sno-7, repositories, *, project-sno-7/*, allow
 
 g, admin-sno-7, role:admin-sno-7 
 
+p, role:admin-sno-8, applications, *, project-sno-8/*, allow 
+
+p, role:admin-sno-8, clusters, get, project-sno-8/*, allow 
+
+p, role:admin-sno-8, repositories, *, project-sno-8/*, allow 
+
+g, admin-sno-8, role:admin-sno-8 
+
