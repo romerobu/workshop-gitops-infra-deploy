@@ -49,10 +49,10 @@ EOF
     cleanup() {
         rm -f ./openshift-install
         rm -f .ssh-keys/myocp*
-	mkdir -p .ssh-keys
     }
     
     echo "Generating SSH key pair" ; echo " "
+    mkdir -p .ssh-keys
     rm -f .ssh-keys/myocp_$CLUSTER_NAME ; ssh-keygen -t rsa -b 4096 -N '' -f .ssh-keys/myocp_$CLUSTER_NAME
     eval "$(ssh-agent -s)"
     
