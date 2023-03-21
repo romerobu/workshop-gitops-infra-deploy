@@ -48,13 +48,13 @@ EOF
 
     cleanup() {
         rm -f ./openshift-install
-        rm -f ~/.ssh/myocp*
+        rm -f .ssh-keys/myocp*
     }
     
     echo "Generating SSH key pair" ; echo " "
-    rm -f ~/.ssh/myocp_$CLUSTER_NAME ; ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/myocp_$CLUSTER_NAME
+    rm -f .ssh-keys/myocp_$CLUSTER_NAME ; ssh-keygen -t rsa -b 4096 -N '' -f .ssh-keys/myocp_$CLUSTER_NAME
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/myocp_$CLUSTER_NAME
+    ssh-add .ssh-keys/myocp_$CLUSTER_NAME
     ssh-add -L
     
     ## Install config file
@@ -65,7 +65,7 @@ EOF
     mkdir -p install && mkdir ./install/install-dir-$CLUSTER_NAME/
 
     PULL_SECRET=$(cat ./pullsecret.txt)
-    SSH_KEY=$(cat ~/.ssh/myocp_$CLUSTER_NAME.pub)
+    SSH_KEY=$(cat .ssh-keys/myocp_$CLUSTER_NAME.pub)
     
     if [ $VPC != false ]; then
       echo "Existing VPC is $VPC..."
