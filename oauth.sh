@@ -29,15 +29,17 @@ if [ $ADMIN == false ]; then
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-7 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-8 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-9 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-10 redhat
   
 
 else
 
   echo "Creating users for SNO cluster"
   htpasswd -c -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd admin redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd peter redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd karla redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd anna redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user01 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user02 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user03 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user04 redhat
 
 fi
 
