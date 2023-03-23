@@ -60,6 +60,7 @@ for i in $(seq 1 $CLUSTER);do
    export KUBECONFIG=./install/install-dir-argo-hub/auth/kubeconfig
    oc adm groups new admin-sno-$i
    oc adm groups add-users admin-sno-$i user-$i 
+   oc adm policy add-cluster-role-to-user view user-$i
    
 done
 
