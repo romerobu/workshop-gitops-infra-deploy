@@ -53,7 +53,11 @@ To deploy an instance of keycloak and create the corresponding realms, client an
 ```bash
 sh set-up-keycloak.sh <number_of_clusters> <subdomain>
 ```
+Beware you need to update your certificate on your helm charts repo:
 
+```bash
+oc -n openshift-ingress-operator get secret router-ca -o jsonpath="{ .data.tls\.crt }" | base64 -d -i 
+```
 ## Deploy FreeIPA
 
 Follow the instructions [here](https://github.com/redhat-cop/helm-charts/tree/master/charts/ipa) to deploy FreeIPA server.
