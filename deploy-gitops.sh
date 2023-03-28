@@ -44,6 +44,7 @@ for i in $(seq 1 $CLUSTER);do
    
    # Configure argo project and restrictions
    argocd proj add-destination project-sno-$i https://api.sno-$i.*.opentlc.com:6443 '*'
+   argocd proj add-destination project-sno-$i https://kubernetes.default.svc '*'   
    argocd proj add-source project-sno-$i '*'
    
    # Configure RBAC project roles
