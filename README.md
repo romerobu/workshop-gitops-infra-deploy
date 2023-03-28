@@ -60,7 +60,7 @@ Follow the instructions [here](https://github.com/redhat-cop/helm-charts/tree/ma
 
 ### Create FreeIPA users
 
-You have to wait for IPA to be fully deployed to run this commands.
+You have to wait for IPA to be fully deployed to run this commands, verify ipa-1-deploy pod is completed.
 
 To create FreeIPA users, run these commands:
 
