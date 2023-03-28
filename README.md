@@ -58,6 +58,12 @@ sh set-up-keycloak.sh <number_of_clusters> <subdomain>
 
 Follow the instructions [here](https://github.com/redhat-cop/helm-charts/tree/master/charts/ipa) to deploy FreeIPA server.
 
+Then, expose ipa service as NodePort and allow external traffic on AWS by configuring the security groups.
+
+```bash
+oc expose service ipa  --type=NodePort --name=ipa-nodeport --generator="service/v2" -n ipa
+```
+
 ### Create FreeIPA users
 
 You have to wait for IPA to be fully deployed to run this commands, verify ipa-1-deploy pod is completed.
