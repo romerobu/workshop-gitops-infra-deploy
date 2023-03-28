@@ -97,6 +97,31 @@ oc exec -it dc/ipa -n ipa -- \
     ipa group-add-member ocp_viewers --users=mark"
 ```
 
+## Deploy vault server
+
+To deploy an instance of vault server:
+
+```bash
+oc login -u kubeadmin -p xxxxx https://api.my.domain.com:6443
+
+helm repo add hashicorp https://helm.releases.hashicorp.com
+
+oc new-project vault
+
+helm install vault hashicorp/vault \
+    --set "global.openshift=true" \
+    --set "server.dev.enabled=true" --values values.openshift.yaml
+
+oc exec -it vault-0 -- /bin/sh
+
+  vault auth enable kubernetes
+
+  vault write auth/kubernetes/config \
+    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
+
+  exit
+```
+
 ## Destroy cluster
 
 If you want to delete a cluster, first run this command to destroy it from AWS:
