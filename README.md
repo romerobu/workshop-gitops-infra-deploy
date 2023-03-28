@@ -56,7 +56,7 @@ sh set-up-keycloak.sh <number_of_clusters> <subdomain>
 
 ## Deploy FreeIPA
 
-warning: TO DO
+Follow the instructions [here](https://github.com/redhat-cop/helm-charts/tree/master/charts/ipa) to deploy FreeIPA server.
 
 # Create FreeIPA users
 
