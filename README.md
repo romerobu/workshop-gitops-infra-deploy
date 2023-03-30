@@ -134,6 +134,12 @@ oc exec -it vault-0 -- /bin/sh
   exit
 ```
 
+Then you must expose vault server so it can be reached from SNO clusters.
+
+Once server is deployed and argo-vault-plugin working on SNO, you must configure vault server auth so argo can authenticate against it.
+
+Follow this instructions [here](https://luafanti.medium.com/injecting-secrets-from-vault-into-helm-charts-with-argocd-43fc1df57e74).
+
 ## Destroy cluster
 
 If you want to delete a cluster, first run this command to destroy it from AWS:
