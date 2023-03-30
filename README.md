@@ -140,6 +140,48 @@ Once server is deployed and argo-vault-plugin working on SNO, you must configure
 
 Follow this instructions [here](https://luafanti.medium.com/injecting-secrets-from-vault-into-helm-charts-with-argocd-43fc1df57e74).
 
+```bash
+# enable kv-v2 engine in Vault
+oc exec vault-0 -- vault secrets enable kv-v2
+
+# create kv-v2 secret with two keys # Put your secrets here
+oc exec vault-0 -- vault kv put kv-v2/demo user="secret_user" password="secret_password"
+
+# create policy to enable reading above secret
+vault policy write demo - <<EOF # Replace with your app name
+path "kv-v2/data/demo" {
+  capabilities = ["read"]
+}
+EOF
+
+oc create sa argocd-repo-server -n openshift-operators
+
+oc exec vault-0 -- vault auth enable kubernetes
+
+# get Kubernetes host address
+K8S_HOST="https://$( oc exec vault-0 -- env | grep KUBERNETES_PORT_443_TCP_ADDR| cut -f2 -d'='):443"
+
+# get Service Account token from Vault Pod
+SA_TOKEN=$(oc exec vault-0 -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+
+# get Service Account CA certificate from Vault Pod
+SA_CERT=$(oc exec vault-0 -- cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt)
+
+# configure Kubernetes Auth Method
+oc exec vault-0 -- vault write auth/kubernetes/config \
+    token_reviewer_jwt=$SA_TOKEN \
+    kubernetes_host=$K8S_HOST \
+    kubernetes_ca_cert="$SA_CERT"
+
+# create authenticate Role for ArgoCD
+oc exec vault-0 -- vault write auth/kubernetes/role/argocd \
+  bound_service_account_names=argocd-repo-server \
+  bound_service_account_namespaces=openshift-operators \
+  policies=demo \
+  ttl=48h
+```
+
+
 ## Destroy cluster
 
 If you want to delete a cluster, first run this command to destroy it from AWS:
