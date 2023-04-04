@@ -4,6 +4,8 @@ metadata:
   name: argocd
   namespace: openshift-operators
 spec:
+  applicationSet:
+    logLevel: info
   resourceTrackingMethod: annotation+label
   controller:
     resources:
