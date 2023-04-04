@@ -70,6 +70,7 @@ helm dep up ipa
 
 helm upgrade --install ipa . --namespace=ipa --create-namespace --set app_domain=apps.<domain>
 ```
+You have to wait for IPA to be fully deployed to run this commands, verify ipa-1-deploy pod is completed.
 
 Then, expose ipa service as NodePort and allow external traffic on AWS by configuring the security groups.
 
@@ -78,8 +79,6 @@ oc expose service ipa  --type=NodePort --name=ipa-nodeport --generator="service/
 ```
 
 ### Create FreeIPA users
-
-You have to wait for IPA to be fully deployed to run this commands, verify ipa-1-deploy pod is completed.
 
 To create FreeIPA users, run these commands:
 
@@ -123,7 +122,7 @@ oc exec -it dc/ipa -n ipa -- \
 To deploy an instance of vault server:
 
 ```bash
-oc login -u kubeadmin -p xxxxx https://api.my.domain.com:6443
+git clone https://github.com/hashicorp/vault-helm.git
 
 helm repo add hashicorp https://helm.releases.hashicorp.com
 
