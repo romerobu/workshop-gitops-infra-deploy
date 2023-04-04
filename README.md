@@ -62,6 +62,15 @@ oc -n openshift-ingress-operator get secret router-ca -o jsonpath="{ .data.tls\.
 
 Follow the instructions [here](https://github.com/redhat-cop/helm-charts/tree/master/charts/ipa) to deploy FreeIPA server.
 
+```bash
+git clone https://github.com/redhat-cop/helm-charts.git
+
+cd helm-charts/charts
+helm dep up ipa
+
+helm upgrade --install ipa . --namespace=ipa --create-namespace --set app_domain=apps.<domain>
+```
+
 Then, expose ipa service as NodePort and allow external traffic on AWS by configuring the security groups.
 
 ```bash
