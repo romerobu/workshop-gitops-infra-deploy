@@ -40,7 +40,8 @@ else
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user02 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user03 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user04 redhat
-
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd apimanager01 redhat
+  
 fi
 
 
