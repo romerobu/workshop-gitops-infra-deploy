@@ -131,6 +131,8 @@ oc new-project vault
 helm install vault hashicorp/vault \
     --set "global.openshift=true" \
     --set "server.dev.enabled=true" --values values.openshift.yaml
+    
+oc expose svc vault -n vault -n vault
 ```
 
 Then you must expose vault server so it can be reached from SNO clusters.
