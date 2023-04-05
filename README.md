@@ -149,25 +149,19 @@ oc exec vault-0 -- vault kv put kv-v2/demo user="secret_user" password="secret_p
 oc exec vault-0 -- vault kv get kv-v2/demo
 
 # create policy to enable reading above secret
-oc exec vault-0 -- vault policy write demo - <<EOF # Replace with your app name
+vault policy write demo - <<EOF # Replace with your app name
 path "kv-v2/data/demo" {
   capabilities = ["read"]
 }
 EOF
 
-oc exec vault-0 -- vault auth enable kubernetes
+vault auth enable approle
 
-vault write auth/kubernetes/config \
-    token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
-    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443" \
-    kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+vault write auth/approle/role/argocd secret_id_ttl=120h token_num_uses=1000 token_ttl=120h token_max_ttl=120h secret_id_num_uses=4000  token_policies=demo
 
-# create authenticate Role for ArgoCD
-oc exec vault-0 -- vault write auth/kubernetes/role/argocd \
-  bound_service_account_names=argocd-repo-server \
-  bound_service_account_namespaces=openshift-operators \
-  policies=demo \
-  ttl=48h
+vault read auth/approle/role/argocd/role-id
+
+vault write -f auth/approle/role/argocd/secret-id
 ```
 
 
