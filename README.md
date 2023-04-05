@@ -131,15 +131,6 @@ oc new-project vault
 helm install vault hashicorp/vault \
     --set "global.openshift=true" \
     --set "server.dev.enabled=true" --values values.openshift.yaml
-
-oc exec -it vault-0 -- /bin/sh
-
-  vault auth enable kubernetes
-
-  vault write auth/kubernetes/config \
-    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
-
-  exit
 ```
 
 Then you must expose vault server so it can be reached from SNO clusters.
@@ -155,31 +146,21 @@ oc exec vault-0 -- vault secrets enable kv-v2
 # create kv-v2 secret with two keys # Put your secrets here
 oc exec vault-0 -- vault kv put kv-v2/demo user="secret_user" password="secret_password"
 
+oc exec vault-0 -- vault kv get kv-v2/demo
+
 # create policy to enable reading above secret
-vault policy write demo - <<EOF # Replace with your app name
+oc exec vault-0 -- vault policy write demo - <<EOF # Replace with your app name
 path "kv-v2/data/demo" {
   capabilities = ["read"]
 }
 EOF
 
-oc create sa argocd-repo-server -n openshift-operators
-
 oc exec vault-0 -- vault auth enable kubernetes
 
-# get Kubernetes host address
-K8S_HOST="https://$( oc exec vault-0 -- env | grep KUBERNETES_PORT_443_TCP_ADDR| cut -f2 -d'='):443"
-
-# get Service Account token from Vault Pod
-SA_TOKEN=$(oc exec vault-0 -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-
-# get Service Account CA certificate from Vault Pod
-SA_CERT=$(oc exec vault-0 -- cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt)
-
-# configure Kubernetes Auth Method
-oc exec vault-0 -- vault write auth/kubernetes/config \
-    token_reviewer_jwt=$SA_TOKEN \
-    kubernetes_host=$K8S_HOST \
-    kubernetes_ca_cert="$SA_CERT"
+vault write auth/kubernetes/config \
+    token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443" \
+    kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
 
 # create authenticate Role for ArgoCD
 oc exec vault-0 -- vault write auth/kubernetes/role/argocd \
