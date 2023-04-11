@@ -146,7 +146,7 @@ Follow this instructions [here](https://luafanti.medium.com/injecting-secrets-fr
 oc exec vault-0 -- vault secrets enable kv-v2
 
 # create kv-v2 secret with two keys # Put your secrets here
-oc exec vault-0 -- vault kv put kv-v2/demo user="secret_user" password="secret_password"
+oc exec vault-0 -- vault kv put kv-v2/demo ldap_bind_password="Passw0rd"
 
 oc exec vault-0 -- vault kv get kv-v2/demo
 
