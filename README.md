@@ -167,6 +167,12 @@ vault write -f auth/approle/role/argocd/secret-id
 ```
 
 
+## Deploy mysql instance
+To deploy a mysql instance reachable throughout a bastion instance:
+```bash
+./deploy-mysql.sh
+```
+
 ## Destroy cluster
 
 If you want to delete a cluster, first run this command to destroy it from AWS:
