@@ -88,7 +88,6 @@ EOF
     fi	    
 
 cat << EOF > ./backup/backup-$CLUSTER_NAME/install-config.yaml
-additionalTrustBundlePolicy: Proxyonly
 apiVersion: v1
 baseDomain: $BASE_DOMAIN
 compute:
