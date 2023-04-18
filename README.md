@@ -78,6 +78,8 @@ Then, expose ipa service as NodePort and allow external traffic on AWS by config
 oc expose service ipa  --type=NodePort --name=ipa-nodeport --generator="service/v2" -n ipa
 ```
 
+Make sure you have enabled a security group for allowing incoming traffic to port 389.
+
 ### Create FreeIPA users
 
 To create FreeIPA users, run these commands:
