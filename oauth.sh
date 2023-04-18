@@ -30,7 +30,11 @@ if [ $ADMIN == false ]; then
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-8 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-9 redhat
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-10 redhat
-  
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-11 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-12 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-13 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-14 redhat
+  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-15 redhat
 
 else
 
@@ -43,8 +47,6 @@ else
   htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd apimanager01 redhat
   
 fi
-
-
 
 echo "Creating HTPasswd Secret"
 oc create secret generic htpass-secret --from-file=htpasswd=./oauth/oauth-$CLUSTER_NAME/htpasswd -n openshift-config --dry-run -o yaml | oc apply -f -
