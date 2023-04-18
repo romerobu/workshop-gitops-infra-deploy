@@ -67,7 +67,7 @@ git clone https://github.com/redhat-cop/helm-charts.git
 
 cd helm-charts/charts
 helm dep up ipa
-
+cd ipa/
 helm upgrade --install ipa . --namespace=ipa --create-namespace --set app_domain=apps.<domain>
 ```
 You have to wait for IPA to be fully deployed to run this commands, verify ipa-1-deploy pod is completed.
