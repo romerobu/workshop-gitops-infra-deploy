@@ -46,6 +46,33 @@ sh deploy-gitops.sh 3
 
 This script configures argo RBAC so users created in hub cluster for sno managed cluster (user-1, user-2...) can only view project-sno-x and destination sno-x clusters hence only deploying to the allowed destination within the allowed project.
 
+### Declarative setup
+
+You can also deploy and configure GitOps using a declarative approach as defined in this [repo](https://github.com/romerobu/workshop-gitops-content-deploy.git).
+
+First install Openshift GitOps operator. Then create a setup-sno branch, add your clusters token to hub-setup/charts/gitops-setup/values.yaml file and then create global-config/bootstrap-a/hub-setup-a.yaml Application on your default instance.
+
+```bash
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hub-setup
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/romerobu/workshop-gitops-content-deploy.git
+    targetRevision: setup-sno
+    path: hub-setup/charts/gitops-setup 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
 ## Deploy keycloak
 
 To deploy an instance of keycloak and create the corresponding realms, client and users, run this script:
