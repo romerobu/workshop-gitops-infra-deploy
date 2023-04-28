@@ -50,7 +50,7 @@ This script configures argo RBAC so users created in hub cluster for sno managed
 
 You can also deploy and configure GitOps using a declarative approach as defined in this [repo](https://github.com/romerobu/workshop-gitops-content-deploy.git).
 
-First install Openshift GitOps operator. Then create a setup-sno branch, add your clusters token to hub-setup/charts/gitops-setup/values.yaml file and then create global-config/bootstrap-a/hub-setup-a.yaml Application on your default instance.
+First install Openshift GitOps operator. Then create a setup-sno branch, add your clusters token to [hub-setup/charts/gitops-setup/values.yaml](https://github.com/romerobu/workshop-gitops-content-deploy/blob/main/hub-setup/charts/gitops-setup/values.yaml) file and then create global-config/bootstrap-a/hub-setup-a.yaml Application on your default instance.
 
 ```bash
 apiVersion: argoproj.io/v1alpha1
