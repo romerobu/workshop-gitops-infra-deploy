@@ -181,6 +181,8 @@ oc exec vault-0 -- vault kv put kv-v2/demo password="password123"
 
 oc exec vault-0 -- vault kv get kv-v2/demo
 
+oc rsh vault-0 # Then run these commands
+
 # create policy to enable reading above secret
 vault policy write demo - <<EOF # Replace with your app name
 path "kv-v2/data/demo" {
