@@ -196,7 +196,7 @@ vault read auth/approle/role/argocd/role-id
 
 vault write -f auth/approle/role/argocd/secret-id
 ```
-Bear in mind you need to update this [secret](https://github.com/romerobu/workshop-gitops-content-deploy/blob/main/cluster-addons/charts/bootstrap/templates/vault/secret-vault.yaml) on main and main-day2 branch to so users will clone and pull the right credentials.
+Bear in mind you need to update this [secret](https://github.com/romerobu/workshop-gitops-content-deploy/blob/main/cluster-addons/charts/bootstrap/templates/vault/secret-vault.yaml) on main and [main-day2](https://github.com/romerobu/workshop-gitops-content-deploy/blob/main-day2/cluster-addons/charts/bootstrap/templates/vault/secret-vault.yaml) branch to so users will clone and pull the right credentials.
 
 ## Destroy cluster
 
