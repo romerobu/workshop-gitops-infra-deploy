@@ -80,7 +80,7 @@ To deploy an instance of keycloak and create the corresponding realms, client an
 ```bash
 sh set-up-keycloak.sh <number_of_clusters> <subdomain>
 ```
-Beware you need to update your certificate on your helm charts repo:
+Beware you need to update your [certificate](https://github.com/romerobu/helm-infra-gitops-workshop/blob/main/charts/oauth/files/ca.crt) on your helm charts repo:
 
 ```bash
 oc -n openshift-ingress-operator get secret router-ca -o jsonpath="{ .data.tls\.crt }" | base64 -d -i 
