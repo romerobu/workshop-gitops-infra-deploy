@@ -4,6 +4,7 @@ CURRENT_DIR=$(pwd)
 
 CLUSTER_NAME=$1
 ADMIN=$2
+USERS=$3
 
 echo "Exporting admin TLS credentials..."
 export KUBECONFIG=$CURRENT_DIR/install/install-dir-$CLUSTER_NAME/auth/kubeconfig
@@ -20,21 +21,9 @@ if [ $ADMIN == false ]; then
 
   echo "Creating users for cluster hub..."
   htpasswd -c -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd admin redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-1 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-2 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-3 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-4 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-5 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-6 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-7 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-8 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-9 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-10 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-11 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-12 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-13 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-14 redhat
-  htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-15 redhat
+  for i in $(seq 1 $USERS);do
+     htpasswd -b -B ./oauth/oauth-$CLUSTER_NAME/htpasswd user-$i redhat
+  done
 
 else
 
