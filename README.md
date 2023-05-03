@@ -1,5 +1,7 @@
 # workshop-gitops-infra-deploy
 
+This repo is part of the [ArgoCD Managing Infrastructure workshop](https://romerobu.github.io/manual-workshop-infra/manual-workshop-infra/index.html) and is intended to deploy clusters (hub and managed) for this purpose plus the infra setup required to complete the activities. 
+
 ## Create cluster
 
 :warning: First of all, create a **./pullsecret.txt** containing the pull secret to be used.
