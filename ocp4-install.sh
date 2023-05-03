@@ -95,17 +95,17 @@ compute:
 - architecture: amd64
   hyperthreading: Enabled
   name: worker
-  platform: {}
-#    aws:
-#     type: m6i.4xlarge  
+  platform: #{}
+    aws:
+     type: m6i.4xlarge  
   replicas: $REPLICAS_WORKER
 controlPlane:
   architecture: amd64
   hyperthreading: Enabled
   name: master
-  platform: {}
-#    aws:
-#     type: m6i.4xlarge    
+  platform: #{}
+    aws:
+     type: m6i.4xlarge    
   replicas: $REPLICAS_CP
 metadata:
   creationTimestamp: null
