@@ -80,7 +80,7 @@ spec:
 To deploy an instance of keycloak and create the corresponding realms, client and users, run this script:
 
 ```bash
-sh set-up-keycloak.sh <number_of_clusters> <subdomain>
+sh set-up-keycloak.sh <number_of_clusters> <subdomain | sandoboxXXX.opentlc.com>
 ```
 Beware you need to update your [certificate](https://github.com/romerobu/helm-infra-gitops-workshop/blob/main/charts/oauth/files/ca.crt) on your helm charts repo:
 
