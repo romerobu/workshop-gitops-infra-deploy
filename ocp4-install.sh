@@ -13,7 +13,8 @@ REPLICAS_WORKER=$5
 VPC=$6
 AWS_ID=$7
 AWS_SECRET_KEY=$8
-OCP_VERSION=$9
+USERS=$9
+OCP_VERSION=$10
 
 ## Prerequisites
 echo "If you want to install a specific OCP version, type the version in format X.X"
@@ -144,7 +145,7 @@ EOF
     if [ $INSTALL -gt 0 ]; then
     ./openshift-install create cluster --dir=install/install-dir-$CLUSTER_NAME --log-level=info
     echo "Set HTPasswd as Identity Provider" ; echo " "
-    ./oauth.sh $CLUSTER_NAME $VPC
+    ./oauth.sh $CLUSTER_NAME $VPC $USERS
     ssh-add -D
     fi
 else
