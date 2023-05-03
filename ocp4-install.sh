@@ -22,8 +22,8 @@ echo "Downloading OCP 4 installer if not exists:"
 if [ ! -z $OCP_VERSION ]; then
     if [ ! -f ./ocp4-installer.tar.gz ]; then
         echo "OCP VERSION: $OCP_VERSION"
-        REMOTE_OCP_VERSION=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.11/release.txt | grep Version: | awk '{print $2}')
-        wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.11/openshift-install-linux-$REMOTE_OCP_VERSION.tar.gz && tar xvzf ./ocp4-installer.tar.gz
+        REMOTE_OCP_VERSION=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.12/release.txt | grep Version: | awk '{print $2}')
+        wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.12/openshift-install-linux-$REMOTE_OCP_VERSION.tar.gz && tar xvzf ./ocp4-installer.tar.gz
     else
         echo "Installer exists, using ./ocp4-installer.tar.gz. Unpacking..." ; echo " "
         tar xvzf ./ocp4-installer.tar.gz
