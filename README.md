@@ -9,18 +9,18 @@ This repo is part of the [ArgoCD Managing Infrastructure workshop](https://romer
 This script deploy OCP both hub and SNO managed on AWS. You must specify the following params:
 
 ```bash
-sh ocp4-install.sh <cluster_name> <region_aws> <base_domain> <replicas_master> <replicas_worker> <vpc_id|false> <aws_id> <aws_secret> <amount_of_users> <ocp_version|null>
+sh ocp4-install.sh <cluster_name> <region_aws> <base_domain> <replicas_master> <replicas_worker> <vpc_id|false> <aws_id> <aws_secret> <instance_type> <amount_of_users>
 ```
 VPC id is required only if you are deploying on an existing VPC, otherwise specify "false". 
-OCP version is not a required input value either, you can skip it if you want to install the latest version.
+Amount of users means users for the amount of managed cluster, in case you are not installing hub cluster it is not required.
 
 ```bash
-sh ocp4-install.sh argo-hub eu-central-1 <base_domain> 3 3 false <aws_id> <aws_secret> <amount_of_users>
+sh ocp4-install.sh argo-hub eu-central-1 <base_domain> 3 3 false <aws_id> <aws_secret> m6i.xlarge <amount_of_users> 
 ```
 For deploying a SNO managed cluster:
 
 ```bash
-sh ocp4-install.sh sno-1 eu-central-1 <base_domain> 1 0 <vpc_id> <aws_id> <aws_secret> <amount_of_users>
+sh ocp4-install.sh sno-1 eu-central-1 <base_domain> 1 0 <vpc_id> <aws_id> <aws_secret> m6i.4xlarge
 ```
 :warning: It is recommended to name hub and sno clusters as *argo-hub* and *sno-x*
 
@@ -52,7 +52,7 @@ This script configures argo RBAC so users created in hub cluster for sno managed
 
 You can also deploy and configure GitOps using a declarative approach as defined in this [repo](https://github.com/romerobu/workshop-gitops-content-deploy.git).
 
-First install Openshift GitOps operator. Then create a setup-sno branch, add your clusters token to [hub-setup/charts/gitops-setup/values.yaml](https://github.com/romerobu/workshop-gitops-content-deploy/blob/main/hub-setup/charts/gitops-setup/values.yaml) file and then create global-config/bootstrap-a/hub-setup-a.yaml Application on your default instance.
+First install Openshift GitOps operator. Then create a setup-sno branch, add your clusters token to [hub-setup/charts/gitops-setup/values.yaml](https://github.com/romerobu/workshop-gitops-content-deploy/blob/main/hub-setup/charts/gitops-setup/values.yaml) file, then set subdomain and sharding replicas values and then create global-config/bootstrap-a/hub-setup-a.yaml Application on your default instance.
 
 ```bash
 apiVersion: argoproj.io/v1alpha1
@@ -106,7 +106,11 @@ Then, expose ipa service as NodePort and allow external traffic on AWS by config
 ```bash
 oc expose service ipa  --type=NodePort --name=ipa-nodeport --generator="service/v2" -n ipa
 ```
-Make sure you have enabled a security group for allowing incoming traffic to port 389 (nodeport) and origin 10.0.0.0/16.
+Make sure you have enabled a security group for allowing incoming traffic to port 389 (nodeport) and origin 10.0.0.0/16. You can test connectivity running this command from your managed cluster node:
+
+```bash
+nc -vz <hub_worker_node_ip> <ldap_nodeport>
+```
 
 ### Create FreeIPA users
 
