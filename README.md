@@ -22,7 +22,7 @@ For deploying a SNO managed cluster:
 ```bash
 sh ocp4-install.sh sno-1 eu-central-1 <base_domain> 1 0 <vpc_id> <aws_id> <aws_secret> m6i.4xlarge
 ```
-:warning: It is recommended to name hub and sno clusters as *argo-hub* and *sno-x*
+:warning: It is mandatory to name hub and sno clusters as *argo-hub* and *sno-x*
 
 You can check your VPC id on AWS console or by running this command:
 
