@@ -34,6 +34,8 @@ aws ec2 describe-vpcs
 
 :warning: You need to install argocd [CLI](https://argo-cd.readthedocs.io/en/stable/cli_installation/) and [yq](https://www.cyberithub.com/how-to-install-yq-command-line-tool-on-linux-in-5-easy-steps/).
 
+:warning: It's higly recommended to fllow de Declarative setup approach as it has the last updates.
+
 This script installs GitOps operator, deploy ArgoCD instance and add managed clusters. You must specify the amount of deployed SNO clusters to be managed by argocd:
 
 ```bash
