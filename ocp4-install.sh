@@ -5,37 +5,29 @@ set -x
 ## Env
 DIR=$(pwd)
 INSTALL="0"
-CLUSTER_NAME=$1
-REGION=$2
-BASE_DOMAIN=$3
-REPLICAS_CP=$4
-REPLICAS_WORKER=$5
-VPC=$6
-AWS_ID=$7
-AWS_SECRET_KEY=$8
-USERS=$9
-OCP_VERSION=$10
+CLUSTER_NAME=${1}
+REGION=${2}
+BASE_DOMAIN=${3}
+REPLICAS_CP=${4}
+REPLICAS_WORKER=${5}
+VPC=${6}
+AWS_ID=${7}
+AWS_SECRET_KEY=${8}
+INSTANCE_TYPE=${9}
+USERS=${10}
+
 
 ## Prerequisites
-echo "If you want to install a specific OCP version, type the version in format X.X"
+echo "This script install the latest stable version available for OCP..."
 echo "Downloading OCP 4 installer if not exists:"
-if [ ! -z $OCP_VERSION ]; then
-    if [ ! -f ./ocp4-installer.tar.gz ]; then
-        echo "OCP VERSION: $OCP_VERSION"
-        REMOTE_OCP_VERSION=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.12/release.txt | grep Version: | awk '{print $2}')
-        wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.12/openshift-install-linux-$REMOTE_OCP_VERSION.tar.gz && tar xvzf ./ocp4-installer.tar.gz
-    else
-        echo "Installer exists, using ./ocp4-installer.tar.gz. Unpacking..." ; echo " "
-        tar xvzf ./ocp4-installer.tar.gz
-    fi
-else
-    if [ ! -f ./ocp4-installer.tar.gz ]; then
-        wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux.tar.gz && tar xvzf ./ocp4-installer.tar.gz
-    else
-        echo "Installer exists, using ./ocp4-installer.tar.gz. Unpacking..." ; echo " "
-        tar xvzf ./ocp4-installer.tar.gz
-    fi
-fi
+
+  if [ ! -f ./ocp4-installer.tar.gz ]; then
+      wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-install-linux.tar.gz && tar xvzf ./ocp4-installer.tar.gz
+  else
+      echo "Installer exists, using ./ocp4-installer.tar.gz. Unpacking..." ; echo " "
+      tar xvzf ./ocp4-installer.tar.gz
+  fi
+
 
 if [ ! -f ./install/install-dir-$CLUSTER_NAME/terraform.cluster.tfstate ]; then
     echo "AWS credentials: "; echo " "
@@ -97,7 +89,7 @@ compute:
   name: worker
   platform: #{}
     aws:
-     type: m6i.4xlarge  
+     type: $INSTANCE_TYPE #m6i.4xlarge  
   replicas: $REPLICAS_WORKER
 controlPlane:
   architecture: amd64
@@ -105,7 +97,7 @@ controlPlane:
   name: master
   platform: #{}
     aws:
-     type: m6i.4xlarge    
+     type: $INSTANCE_TYPE #m6i.4xlarge    
   replicas: $REPLICAS_CP
 metadata:
   creationTimestamp: null
