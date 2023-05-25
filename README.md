@@ -15,12 +15,12 @@ VPC id is required only if you are deploying on an existing VPC, otherwise speci
 Amount of users means users for the amount of managed cluster, in case you are not installing hub cluster it is not required.
 
 ```bash
-sh ocp4-install.sh argo-hub eu-central-1 <base_domain> 3 3 false <aws_id> <aws_secret> m6i.xlarge <amount_of_users> 
+sh ocp4-install.sh argo-hub <region_aws> <base_domain> 3 3 false <aws_id> <aws_secret> m6i.xlarge <amount_of_users> 
 ```
 For deploying a SNO managed cluster:
 
 ```bash
-sh ocp4-install.sh sno-1 eu-central-1 <base_domain> 1 0 <vpc_id> <aws_id> <aws_secret> m6i.4xlarge
+sh ocp4-install.sh sno-1 <region_aws> <base_domain> 1 0 <vpc_id> <aws_id> <aws_secret> m6i.4xlarge
 ```
 :warning: It is mandatory to name hub and sno clusters as *argo-hub* and *sno-x*
 
