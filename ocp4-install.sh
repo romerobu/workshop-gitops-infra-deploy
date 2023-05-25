@@ -18,11 +18,11 @@ USERS=${10}
 
 
 ## Prerequisites
-echo "This script install the latest version available for OCP..."
+echo "This script install the latest stable version available for OCP..."
 echo "Downloading OCP 4 installer if not exists:"
 
   if [ ! -f ./ocp4-installer.tar.gz ]; then
-      wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux.tar.gz && tar xvzf ./ocp4-installer.tar.gz
+      wget -O ./ocp4-installer.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-install-linux.tar.gz && tar xvzf ./ocp4-installer.tar.gz
   else
       echo "Installer exists, using ./ocp4-installer.tar.gz. Unpacking..." ; echo " "
       tar xvzf ./ocp4-installer.tar.gz
