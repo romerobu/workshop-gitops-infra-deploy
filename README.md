@@ -1,4 +1,3 @@
-:warning: **Repo added to this [organization](https://github.com/WorkshopGitOpsInfra)**, this is view-only.
 
 # workshop-gitops-infra-deploy
 
